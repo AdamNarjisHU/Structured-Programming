@@ -47,9 +47,9 @@ def ai_mastermind_gok(ai_gok, tip, ai_opties_lijst, ronde):
 def play_game():
     secret_key = input_secret_key()
     print('secret key is: {}'.format(secret_key))
-    aantal_guesses = 0
+    pogingen = 0
     ai_mogelijkheden = maak_alle_mogelijkheden()
-    gok, ai_mogelijkheden = ai_mastermind_gok(ai_gok=None, tip=None, ai_opties_lijst=ai_mogelijkheden, ronde=aantal_guesses)
+    gok, ai_mogelijkheden = ai_mastermind_gok(ai_gok=None, tip=None, ai_opties_lijst=ai_mogelijkheden, ronde=pogingen)
 
     if gok == secret_key:
         print('Game over! AI heeft gewonnen.')
@@ -57,7 +57,7 @@ def play_game():
         play = True
         while play:
             tips = []
-            aantal_guesses += 1
+            pogingen += 1
             for i in range(0, 4):
                 if (gok[i] == secret_key[i]):
                     tips.append('wit')
@@ -67,9 +67,9 @@ def play_game():
             if tips.count('wit') == 3:
                 tips = ['wit', 'wit', 'wit']
 
-            if aantal_guesses <= 10:
-                print('ronde {}'.format(aantal_guesses))
-                gok, ai_mogelijkheden = ai_mastermind_gok(ai_gok=gok, tip=tips, ai_opties_lijst=ai_mogelijkheden, ronde=aantal_guesses)
+            if pogingen <= 10:
+                print('ronde {}'.format(pogingen))
+                gok, ai_mogelijkheden = ai_mastermind_gok(ai_gok=gok, tip=tips, ai_opties_lijst=ai_mogelijkheden, ronde=pogingen)
                 if gok == secret_key:
                     print('Game over! AI heeft gewonnen!')
                     play = False
