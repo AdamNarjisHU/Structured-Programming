@@ -49,7 +49,6 @@ def check_hints(item1, item2):
 
     if hints.count('wit') == 3:
         hints = ['wit', 'wit', 'wit']
-
     return hints
 
 def bereken_worst_case(pogingen_lijst):
@@ -59,11 +58,10 @@ def bereken_worst_case(pogingen_lijst):
             worst_cases[tuple(evaluate(item, pogingen_lijst[i]))] += 1
     print(len(worst_cases))
 
-
 def maak_alle_mogelijkheden():
     kleuren_lijst = ['rood', 'oranje', 'geel', 'groen', 'blauw', 'paars']
     mogelijkheden_lijst = []
-    for prod in itertools.product(kleuren_lijst, repeat=4):
+    for prod in itertools.product(kleuren_lijst, repeat = 4):
         mogelijkheden_lijst.append(prod)
     return mogelijkheden_lijst
 
@@ -72,9 +70,8 @@ def input_secret_key():
     k2 = input('Geef je 2e kleur: ')
     k3 = input('Geef je 3e kleur: ')
     k4 = input('Geef je 4e kleur: ')
-    secret_key = (k1, k2, k3, k4)
+    secret_key = (k1.lower(), k2.lower(), k3.lower(), k4.lower())
     return secret_key
-
 
 def ai_mastermind_gok(ai_gok, tip, ai_opties_lijst, ronde):
     mogelijkheden_dict = {}
@@ -93,13 +90,11 @@ def ai_mastermind_gok(ai_gok, tip, ai_opties_lijst, ronde):
                 nieuwe_pogingen.append(k)
         bereken_worst_case(nieuwe_pogingen)
         print('AI voert in: {}'.format(nieuwe_pogingen[0]))
-
         return nieuwe_pogingen[0], nieuwe_pogingen
-
 
 def play_game():
     secret_key = input_secret_key()
-    print('secret key is: {}'.format(secret_key))
+    print('secret key is:',  secret_key))
     aantal_guesses = 0
     ai_mogelijkheden = maak_alle_mogelijkheden()
     gok, ai_mogelijkheden = ai_mastermind_gok(ai_gok=None, tip=None, ai_opties_lijst=ai_mogelijkheden, ronde=aantal_guesses)
